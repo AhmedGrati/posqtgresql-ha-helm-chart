@@ -14,6 +14,7 @@ To run this chart, follow these steps:
     kind: Secret
     metadata:
       name: postgresql-secret
+      namespace: database
     data:
       postgresql-postgres-password: "UG9zdGdSZXMyTWU="
       postgresql-password: "UG9zdGdSZXMyWmFiYml4"

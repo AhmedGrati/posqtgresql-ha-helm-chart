@@ -1,28 +1,16 @@
 postgresql:
-  existingSecret: postgresql-secret
-  postgresqlUsername: zabbix
-  postgresqlDatabase: zabbix
+  auth:
+    existingSecret: postgresql-secret
+    username: zabbix
+    database: zabbix
   primary:
     nodeSelector:
       "kubernetes.io/hostname": minikube
-  persistence:
-    storageClass: postgres-storage-class
-    enabled: true
-#
-#    ## If you want to reuse an existing claim, you can pass the name of the PVC using
-#    ## the existingClaim variable
-#    ##
-    existingClaim: postgres-pvc
-#
-#    ## postgresql data Persistent Volume Storage Class
-#    ## If defined, storageClassName: <storageClass>
-#    ## If set to "-", storageClassName: "", which disables dynamic provisioning
-#    ## If undefined (the default) or set to null, no storageClassName spec is
-#    ##   set, choosing the default provisioner.  (gp2 on AWS, standard on
-#    ##   GKE, AWS & OpenStack)
-#    ##
-#    # storageClass: "-"
-    accessMode: ReadWriteOnce
-    size: 8Gi
+#    persistence:
+#      enabled: true
+#      storageClass: postgresql-storage-class
+#      existingClaim: postgresql-pvc
+#      accessModes: ReadWriteOnce
+#      size: 8Gi
 
-  postgresqlMaxConnections: 500
+
