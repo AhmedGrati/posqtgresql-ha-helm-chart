@@ -1,2 +1,3 @@
 .idea
 charts
+templates/postgres-secrets.yaml
