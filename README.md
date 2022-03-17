@@ -16,8 +16,8 @@ To run this chart, follow these steps:
       name: postgresql-secret
       namespace: database
     data:
-      postgresql-postgres-password: "UG9zdGdSZXMyTWU="
-      postgresql-password: "UG9zdGdSZXMyWmFiYml4"
+      postgres-password: "UG9zdGdSZXMyTWU="
+      password: "UG9zdGdSZXMyWmFiYml4"
     ```
 4. For dev purposes, you can comment the files under templates' folder, as well as the ``postgresql.persistence`` part
     in the ``values.yaml`` file.
