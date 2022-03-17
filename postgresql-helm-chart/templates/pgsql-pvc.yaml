@@ -1,0 +1,13 @@
+kind: "PersistentVolumeClaim"
+apiVersion: "v1"
+metadata:
+  name: {{ .Values.postgresql.persistence.existingClaim }}
+  annotations:
+    volume.beta.kubernetes.io/storage-class: {{ .Values.postgresql.persistence.storageClass | quote }}
+spec:
+  storageClassName: {{ .Values.postgresql.persistence.storageClass }}
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: {{ .Values.postgresql.persistence.size }}
