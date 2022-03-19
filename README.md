@@ -6,7 +6,7 @@ To run this chart, follow these steps:
 1. Make sure that you have helm running in your host.
 2. Run the following command to pull ``postgresql`` helm chart dependencies:
     ```shell 
-   helm dependency update .
+   helm dependency update ./postgresql-helm-chart
     ```
 3. Create a secret that will hold the database passwords. The secret object should look like this (change the data values):
     ```yaml
@@ -25,7 +25,11 @@ To run this chart, follow these steps:
 ```shell
 kubectl create ns database
 ```
-6. Finally, install the chart by running the following command:
+6. Create a folder in your node that will hold postgres data, by running this command:
+```shell
+mkdir -p /kubernetes-persistent-volume/postgresql
+```
+7. Finally, install the chart by running the following command:
 ```shell
 helm install postgresql postgresql-helm-chart -f postgresql-helm-chart/values.yaml -n database
 ```

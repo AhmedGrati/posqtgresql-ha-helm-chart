@@ -1,0 +1,24 @@
+kind: PersistentVolume
+apiVersion: v1
+metadata:
+  name: postgresql-pv
+  labels:
+    type: local
+spec:
+  storageClassName: {{ .Values.postgresql.primary.persistence.storageClass | quote }}
+  capacity:
+    storage: {{ .Values.postgresql.primary.persistence.size }}
+  local:
+    path: /kubernetes-persistent-volume/postgresql
+  persistentVolumeReclaimPolicy: Retain
+  {{- range .Values.postgresql.primary.persistence.accessModes }}
+  accessModes:
+    - {{ . }}
+  {{- end }}
+  claimRef:
+     namespace: {{ .Release.Namespace }}
+     name: {{ .Values.postgresql.primary.persistence.existingClaim }}
+  {{- with .Values.postgresql.primary.persistence.nodeAffinity }}
+  nodeAffinity:
+    {{ toYaml . | nindent 4}}
+  {{- end }}

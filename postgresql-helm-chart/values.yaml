@@ -6,11 +6,19 @@ postgresql:
   primary:
     nodeSelector:
       "kubernetes.io/hostname": minikube
-#    persistence:
-#      enabled: true
-#      storageClass: postgresql-storage-class
-#      existingClaim: postgresql-pvc
-#      accessModes: ReadWriteOnce
-#      size: 8Gi
+    persistence:
+      enabled: true
+      storageClass: postgresql-storage-class
+      existingClaim: postgresql-pvc
+      accessModes: ["ReadWriteOnce"]
+      size: 8Gi
+      nodeAffinity:
+        required:
+          nodeSelectorTerms:
+            - matchExpressions:
+                - key: kubernetes.io/hostname
+                  operator: In
+                  values:
+                    - minikube
 
 
