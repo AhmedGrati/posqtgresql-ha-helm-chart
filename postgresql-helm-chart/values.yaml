@@ -5,7 +5,7 @@ postgresql:
     database: zabbix
   primary:
     nodeSelector:
-      "kubernetes.io/hostname": minikube
+      "kubernetes.io/hostname": tunmonit
     persistence:
       enabled: true
       storageClass: postgresql-storage-class
@@ -20,5 +20,6 @@ postgresql:
                   operator: In
                   values:
                     - minikube
+                    - tunmonit
 
 
